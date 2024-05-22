@@ -13,6 +13,11 @@
         />
 
     </div>
+    <div>
+        <audio ref="audioPlayer" autoplay>
+            <source src="../assets/soundtrack.mp3" type="audio/mpeg">
+        </audio>
+    </div>
 
     <div @click="reload()" class="reload">Сбросить</div>
 </template>
@@ -28,12 +33,18 @@ export default {
         BoardItem
     },
 
+    mounted() {
+            this.$refs.audioPlayer.play();
+            this.$refs.audioPlayer.volume = 0.1;
+        },
+
     setup() {
         let cells = ref([0, 2, 0, 4, 1, 0, 0, 3, 0, 0, 0, 0, 7, 0, 0, 9]);
         const path = ref([]);
         const size = ref(4);
         const walkedPath = ref([]);
-        const maxLvl = 1;
+        const maxLvl = 3;
+        const volume = 0.3;
         let gameOver = ref(false);
         let lvl = ref(1);
 
@@ -65,7 +76,6 @@ export default {
             })
 
             if (completed) {
-                alert('ya lox');
                 goToNextLvl();
             }
         }
@@ -106,26 +116,31 @@ export default {
         const start = (lvl) => {
             if (lvl === 1){
                 gameOver.value = false;
-                cells.value = [2, 0, 0, 4, 1, 0, 0, 3, 0, 0, 0, 0, 7, 0, 0, 9]
+                cells.value = [1, 0, 4, 7, 0, 2, 0, 0, 0, 3, 0, 0, 9, 0, 0, 0]
                 size.value = 4;
             }
             if (lvl === 2) {
-                cells.value = [0, 2, 1, 7, 0, 0, 0, 0, 0, 0, 0, 0, 4, 3, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                cells.value = [0, 0, 0, 1, 2, 0, 0, 0, 0, 4, 0, 7, 0, 0, 10, 0, 8, 0, 9, 0, 3, 0, 0, 0, 0]
                 size.value = 5;
+                
+            }
+            if (lvl === 3) {
+                cells.value = [1, 0, 2, 0, 0, 0, 7, 0, 8, 0, 0, 0, 0, 3, 0, 13, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 15, 0, 4]
+                size.value = 6;
                 
             }
             path.value = [];
             walkedPath.value = [];
 
 
-        }
+        };
 
         start(lvl.value);
 
         const reload = () => {
             start(lvl.value);
-        }
-
+        };
+        
         return {
             cells,
             mousedown,
@@ -137,7 +152,7 @@ export default {
             reload,
             size, 
             gameOver,
-        }
+        };
     }
 }
 
@@ -149,5 +164,8 @@ export default {
     flex-wrap: wrap;
     margin: 20px auto;
 }   
+audio {
+  display: none; /* Скрыть аудиоплеер */
+}
 
 </style>

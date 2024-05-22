@@ -1,6 +1,7 @@
 <template>
     <div class="game">
         <Board />
+        
     </div>
 
     <!-- Передать сюда переменную GameStatus, чтобы воспроизводить видео -->
