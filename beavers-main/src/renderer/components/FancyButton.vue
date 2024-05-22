@@ -51,7 +51,6 @@
     transition: 1s ease-in-out;
   }
   
-  
   .btn span {
     color: white;
     font-size: 18px;
