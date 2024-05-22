@@ -8,30 +8,27 @@
                 <input v-model="username" type="text" placeholder="Имя пользователя" required>
                 <input v-model="email" type="text" placeholder="Почта" required>
                 <input v-model="password" type="password" placeholder="Пароль" required id="password">
-                <div class="in">
+            </div>
+            <div class="in">
                   <!--check register and password-->
-                    <PixelButton type="submit" class="enter">
+                    <game-button type="submit" class="enter">
                         Войти  
-                    </PixelButton>
+                    </game-button>
                 </div>
                 <div class="in">
                     <router-link to="/">
-                        <FancyButton class="enter">
-                            Вернуться 
-                        </FancyButton>
+                        <game-button class="enter">
+                            Назад
+                        </game-button>
                     </router-link>
                 </div>
-            </div>
         </form>
     </div>
 </template>
 
 <script lang="ts">
-    import PixelButton from "../views/FancyButton.vue";
     import http from "../http_common";
     import GameButton from "../components/GameButton.vue";
-    import router from "../router";
-    import FancyButton from "../views/FancyButton.vue";
 
 
     export default {
@@ -82,7 +79,7 @@
     font-size: 30px;
     text-align: center;
     padding: 20px;
-    color: #7f9e9f;
+    color: #fcfcfc;
     font-weight: 700;
 }
 
@@ -91,7 +88,7 @@
     display: flex;
     flex-direction: column;
     border-radius: 5px;
-    padding: 10px;
+    padding: 10px 10px 2px;
     align-items: center;
 }
 
@@ -140,7 +137,7 @@ input:focus {
 .enter {
     font-size: 24px;
     color: #ffffff;
-    cursor: pointer;
+    
 }
 
 .reg {

@@ -51,14 +51,6 @@
     transition: 1s ease-in-out;
   }
   
-  .btn:hover {
-    transition: 1s ease-in-out;
-    background: #ac41af;
-  }
-  
-  .btn:hover svg {
-    stroke-dashoffset: -480;
-  }
   
   .btn span {
     color: white;

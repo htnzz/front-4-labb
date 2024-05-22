@@ -7,18 +7,20 @@
             <div class="form">
                 <input v-model="username" type="text" placeholder="Имя пользователя" required>
                 <input v-model="password" type="password" placeholder="Пароль" required id="password">
-                <div>
-                    <!--check login and password-->
-                    <PixelButton type="submit" class="enter">
-                        Войти
-                    </PixelButton>
-                </div>
-                <div>
-                    <router-link to="/register">
-                        <a class="reg">Еще нет аккаунта?</a>
-                    </router-link>
-                </div>
             </div>
+            <div class="in">
+                <!--check login and password-->
+            <game-button type="submit" class="enter">
+                Войти
+            </game-button>
+        </div>
+        <div>
+            <router-link to="/">
+                <game-button class="enter">
+                    Назад
+                </game-button>
+            </router-link>
+        </div>
         </form>
     </div>
 </template>
@@ -85,7 +87,7 @@ export default {
     flex-direction: column;
     background-color: #e570f5;
     border-radius: 5px;
-    padding: 10px;
+    padding: 10px 10px 2px;
     align-items: center;
 }
 

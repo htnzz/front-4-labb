@@ -1,10 +1,14 @@
 <template>
   <div class="pixelify-sans">
     <router-view></router-view>
+    <footer class="footer">
+      beta v1.0.0
+    </footer>
   </div>
 </template>
 
 <script setup lang="ts">
+
 </script>
 
 <style lang="css">
@@ -21,8 +25,10 @@ body {
 
 #app {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  height: 100vh;
 }
 
 .pixelify-sans {
@@ -30,5 +36,15 @@ body {
   font-optical-sizing: auto;
   font-weight: 400; /* Adjust weight as needed */
   font-style: normal;
+}
+
+.footer {
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  color: #ffffff;
+  position:fixed;
+  bottom: 0;
+  left: 0;
 }
 </style>

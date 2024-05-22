@@ -6,37 +6,37 @@
       <div class="buttons">
         <router-link to="/game">
           <PixelButton>
-            Играть
+            ИГРАТЬ
           </PixelButton>
         </router-link>
         <router-link to="/profile">
           <PixelButton>
-            Профиль
+            ПРОФИЛЬ
           </PixelButton>
         </router-link>
         <router-link to="/leaderboard">
           <PixelButton>
-            Лидерборд
+            ЛИДЕРБОРД
           </PixelButton>
         </router-link>
         <div v-if="!isAuth">
           <router-link to="/login">
             <PixelButton>
-              Войти
+              ВОЙТИ
             </PixelButton>
           </router-link>
         </div>
         <div v-if="!isAuth">
           <router-link to="/register">
             <PixelButton>
-              Регистрация
+              РЕГИСТРАЦИЯ
             </PixelButton>
           </router-link>
         </div>
         <div class="exit">
           <router-link to="/login">
             <PixelButton @click="handleExit">
-              Выйти
+              ВЫЙТИ
             </PixelButton>
           </router-link>
         </div>
@@ -46,7 +46,7 @@
   
   <script lang="ts">
   import { defineComponent } from "vue";
-  import PixelButton from "../views/FancyButton.vue";
+  import PixelButton from "../components/FancyButton.vue";
   
   export default defineComponent({
     components: {
@@ -123,7 +123,7 @@
     font-size: 30px;
     text-align: center;
     padding: 20px;
-    color: #7f9e9f;
+    color: #fcfcfc;
     font-weight: 700;
   }
   </style>

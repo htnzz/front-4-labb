@@ -13,7 +13,7 @@
         </div>
         <router-link to="/">
             <FancyButton class="enter">
-                Вернуться 
+                Назад
                 </FancyButton>
         </router-link>
         <div v-for="user in info" :key="username">
