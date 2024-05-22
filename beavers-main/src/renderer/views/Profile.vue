@@ -32,9 +32,9 @@
         </div>
         <router-link to="/">
             <div class="exit">
-                <game-button>
+                <FancyButton>
                     Вернуться назад
-                </game-button>
+                </FancyButton>
             </div>
         </router-link>
     </div>

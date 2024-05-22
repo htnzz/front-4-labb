@@ -9,9 +9,9 @@
                 <input v-model="password" type="password" placeholder="Пароль" required id="password">
                 <div>
                     <!--check login and password-->
-                    <game-button type="submit" class="enter">
+                    <PixelButton type="submit" class="enter">
                         Войти
-                    </game-button>
+                    </PixelButton>
                 </div>
                 <div>
                     <router-link to="/register">
@@ -73,18 +73,17 @@ export default {
 }
 
 .header {
-    background-color: #060223;
     font-size: 30px;
     text-align: center;
     padding: 20px;
-    color: #7f9e9f;
+    color: #fcfcfc;
     font-weight: 700;
 }
 
 .form {
     display: flex;
     flex-direction: column;
-    background-color: #b8cece;
+    background-color: #e570f5;
     border-radius: 5px;
     padding: 10px;
     align-items: center;
@@ -101,7 +100,7 @@ export default {
 input {
     padding: 5px;
     background: none;
-    border: 3px solid #8496ae;
+    border: 3px solid #b85fac;
     border-radius: 10px;
     font-size: 20px;
     font-family: 'Comfortaa', sans-serif;
@@ -123,9 +122,8 @@ input:focus {
     width: 15%;
     margin-left: 1em;
     background: none;
-    border: 3px solid #8496ae;
+    border: 3px solid #b85fac;
     border-radius: 10px;
-    background: #8496ae;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -136,11 +134,12 @@ input:focus {
 .enter {
     font-size: 24px;
     cursor: pointer;
+    color: #fcfcfc;
 }
 
 .reg {
     font-style: italic;
-    color: rgb(87, 83, 83);
+    color: rgb(253, 253, 253);
 }
 
 .reg:hover {

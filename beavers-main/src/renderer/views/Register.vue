@@ -10,15 +10,15 @@
                 <input v-model="password" type="password" placeholder="Пароль" required id="password">
                 <div class="in">
                   <!--check register and password-->
-                    <game-button type="submit" class="enter">
+                    <PixelButton type="submit" class="enter">
                         Войти  
-                    </game-button>
+                    </PixelButton>
                 </div>
                 <div class="in">
                     <router-link to="/">
-                        <game-button class="enter">
+                        <FancyButton class="enter">
                             Вернуться 
-                        </game-button>
+                        </FancyButton>
                     </router-link>
                 </div>
             </div>
@@ -27,9 +27,12 @@
 </template>
 
 <script lang="ts">
+    import PixelButton from "../views/FancyButton.vue";
     import http from "../http_common";
     import GameButton from "../components/GameButton.vue";
     import router from "../router";
+    import FancyButton from "../views/FancyButton.vue";
+
 
     export default {
         components: {
@@ -76,7 +79,6 @@
 }
 
 .header {
-    background-color: #060223;
     font-size: 30px;
     text-align: center;
     padding: 20px;
@@ -85,9 +87,9 @@
 }
 
 .form {
+    background-color: #e570f5;
     display: flex;
     flex-direction: column;
-    background-color: #b8cece;
     border-radius: 5px;
     padding: 10px;
     align-items: center;
@@ -99,12 +101,12 @@
 
 .form div {
     margin-bottom: 10px;
-}
+}   
 
 input {
     padding: 5px;
     background: none;
-    border: 3px solid #8496ae;
+    border: 3px solid #b85fac;
     border-radius: 10px;
     font-size: 20px;
     font-family: 'Comfortaa', sans-serif;
@@ -128,7 +130,6 @@ input:focus {
     background: none;
     border: 3px solid #8496ae;
     border-radius: 10px;
-    background: #8496ae;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -138,6 +139,7 @@ input:focus {
 
 .enter {
     font-size: 24px;
+    color: #ffffff;
     cursor: pointer;
 }
 

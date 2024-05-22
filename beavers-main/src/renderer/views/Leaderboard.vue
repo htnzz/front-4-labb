@@ -4,13 +4,18 @@
             Таблица лидеров
         </div>
         <div class="row-table">
-            <div class="name" style="font-size: 26px; font-weight: 700;">
+            <div class="name" style="font-size: 20px; font-weight: 700;">
                 Ник
             </div>
-            <div class="score" style="font-size: 26px; font-weight: 700;">
+            <div class="score" style="font-size: 14px; font-weight: 600;">
                 Результат
             </div>
         </div>
+        <router-link to="/">
+            <FancyButton class="enter">
+                Вернуться 
+                </FancyButton>
+        </router-link>
         <div v-for="user in info" :key="username">
             <div class="row-table">
                 <div class="name">
@@ -21,13 +26,6 @@
                 </div>
             </div>
         </div>
-        <router-link to="/">
-            <div class="exit">
-                <game-button>
-                    Назад
-                </game-button>
-            </div>
-        </router-link>
     </div>
 </template>
 <script lang="ts">
@@ -35,6 +33,7 @@
     import GameButton from "../components/GameButton.vue";
     import User from "../typings/User"
     import http from "../http_common";
+import FancyButton from "./FancyButton.vue";
     export default defineComponent({
         components: {
             GameButton
@@ -62,8 +61,7 @@
         display: flex;
         flex-direction: column;
         width: 40%;
-        background-color: #b8cece;
-        color: #2f1e1e;
+        color: #fcfcfc;
         font-size: 22px;
     }
     .exit {
@@ -76,15 +74,15 @@
     }
 
     .row-table {
-        display: flex;
-        border-bottom: 5px solid #060223;
+        display:flex;
+        border-bottom: 2px solid #fcfcfc;
     }
 
     .name {
         display: flex;
         justify-content: center;
         width: 50%;
-        border-right: 5px solid #060223;
+        border-right: 2px solid #fcfcfc;
         padding: 5px;
     }
 
@@ -96,11 +94,16 @@
     }
 
     .header {
-        background-color: #060223;
         font-size: 30px;
         text-align: center;
         padding: 20px;
-        color: #7f9e9f;
+        color: #fcfcfc;
         font-weight: 700;
+    }
+
+    .enter {
+        position: absolute;
+        bottom: 2em;
+        color:#fcfcfc;
     }
 </style>

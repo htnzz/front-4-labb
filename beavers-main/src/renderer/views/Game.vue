@@ -20,24 +20,17 @@
                 </div>
             </div>
             <div class="btn">
-                <game-button @click="toLeftBeaver" style="width: 200px">
+                <FancyButton @click="toLeftBeaver" style="width: 200px">
                     Влево
-                </game-button>
-                <game-button @click="toRightBeaver" style="width: 200px">
+                </FancyButton>
+                <FancyButton @click="toRightBeaver" style="width: 200px">
                     Вправо
-                </game-button>
+                </FancyButton>
             </div>
         </div>
         <div style="height: 100vh; display: flex; align-items: center;" v-else>
             <div class="game-over">
-                <div> 
-                    Ваш результат: {{currScore}}
-                </div>
-                <router-link to="/" style="width: 300px; display: flex; justify-content: center; align-items: center;">
-                    <game-button>
-                        Назад
-                    </game-button>
-                </router-link>
+                <leaderboard />
             </div>
         </div>
         <img src="../assets/bg1.png" class="logs-img" v-if="currScore >= 2 && currScore < 4 && counter">
@@ -49,22 +42,23 @@
         <img src="../assets/bg7.png" class="logs-img" v-if="currScore >= 14 && currScore < 16 && counter">
         <img src="../assets/bg8.png" class="logs-img" v-if="currScore >= 16 && currScore < 18 && counter">
         <img src="../assets/bg9.png" class="logs-img" v-if="currScore >= 18 && currScore < 20 && counter">
-        <img src="../assets/bg10.png" class="logs-img" v-if="currScore >= 20 && currScore < 22 && counter">
+        <img src="../assets/bg10.png" class="logs-img" v-if="currScore >= 20 && counter">
     </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue"
+import { defineComponent } from "vue";
 import GameButton from "../components/GameButton.vue";
+import Leaderboard from "../views/Leaderboard.vue"; // импортируем компонент Leaderboard
 import http from "../http_common";
 
 export default defineComponent({
     components: {
-        GameButton
+        GameButton,
+        Leaderboard // добавляем компонент Leaderboard в компоненты
     },
 
     data() {
-
         return {
             currScore: 0,
             counter: 20,
@@ -76,16 +70,14 @@ export default defineComponent({
             caught: false,
             user: null,
             userscore: 0,
-        }
+        };
     },
-    methods:
-    {
+    methods: {
         increment() {
             if (this.isRightBeaver && this.isRightLog && !this.caught) {
                 this.caught = true;
                 this.currScore++;
-            }
-            else {
+            } else {
                 if (this.isLeftBeaver && this.isLeftLog && !this.caught) {
                     this.caught = true;
                     this.currScore++;
@@ -95,9 +87,9 @@ export default defineComponent({
         countDown() {
             if (this.counter) {
                 return setTimeout(() => {
-                    --this.counter
-                    this.countDown()
-                }, 1000)
+                    --this.counter;
+                    this.countDown();
+                }, 1000);
             }
 
             this.score = this.currScore;
@@ -127,38 +119,37 @@ export default defineComponent({
         bountyLoop() {
             if (this.isRightLog) {
                 this.toLeftBounty();
-            }
-            else {
+            } else {
                 this.toRightBounty();
             }
         },
         randomNum() {
             var random = Math.random();
 
-            if (random < 0.34)
-                return 1;
+            if (random < 0.34) return 1;
 
             return random;
         },
         handleSubmit() {
             if (this.score > this.userscore) {
                 const response = http.put('/user/update/', {
-                    score: this.score
+                    score: this.score,
                 });
             }
         },
     },
     async mounted() {
         this.countDown();
-        await http.get('/user/')
+        await http
+            .get('/user/')
             .then((response) => {
                 this.user = response.data;
                 this.userscore = response.data.score;
-                console.log(response)
+                console.log(response);
             })
             .catch((e) => {
-                console.log(e)
-            })
+                console.log(e);
+            });
     },
     beforeUpdate() {
         this.increment();
@@ -166,7 +157,7 @@ export default defineComponent({
     updated() {
         this.bountyLoop();
     },
-})
+});
 </script>
 
 <style lang="css" scoped>
@@ -181,7 +172,7 @@ export default defineComponent({
     flex-direction: column;
     align-items: center;
     color: #2f1e1e;
-    background-color: #b8cece;
+    background-color: #b85fac;
     border-radius: 5px;
     font-size: 26px;
     padding: 40px;
