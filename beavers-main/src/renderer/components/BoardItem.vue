@@ -62,43 +62,43 @@ export default {
 }
 
 .icon-1 {
-    background: url('../assets/devil.png');
+    background: url('../assets/beast1.png');
 }
 
 .icon-3 {
-    background: url('../assets/krest4.png');
+    background: url('../assets/weapon1.png');
 }
 
 .icon-2 {
-    background: url('../assets/batman.png');
+    background: url('../assets/beast5.png');
 }
 
 .icon-4 {
-    background: url('../assets/bow.png');
+    background: url('../assets/weapon4.png');
 }
 
 .icon-7 {
-    background: url('../assets/sword.png');
+    background: url('../assets/beast3.png');
 }
 
 .icon-9 {
-    background: url('../assets/skeleton.png');
+    background: url('../assets/weapon3.png');
 }
 
 .icon-8 {
-    background: url('../assets/witch1.png');
+    background: url('../assets/beast4.png');
 }
 
 .icon-10 {
-    background: url('../assets/fire.png');
+    background: url('../assets/weapon2.png');
 }
 
 .icon-13 {
-    background: url('../assets/axe.png');
+    background: url('../assets/beast2.png');
 }
 
 .icon-15 {
-    background: url('../assets/wood.png');
+    background: url('../assets/weapon5.png');
 }
 
 
