@@ -15,6 +15,7 @@
   import http from "../http_common";
   import Board from "../components/Board.vue";
   
+  
   export default defineComponent({
     components: {
       GameButton,

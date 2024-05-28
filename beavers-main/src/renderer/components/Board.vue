@@ -1,4 +1,5 @@
 <template>
+    <CountdownTimer />
     <div>Уровень {{ lvl }}</div>
     <div class="board" :style="{ width: 68 * size + 'px', height: 68 * size * 'px'}">
         <BoardItem
@@ -23,6 +24,7 @@
 </template>
 
 <script>
+import CountdownTimer from "../components/CountdownTimer.vue"
 import BoardItem from "../components/BoardItem.vue";
 import { ref } from 'vue';
 
@@ -30,7 +32,8 @@ export default {
     name: 'Board',
 
     components: {
-        BoardItem
+        BoardItem,
+        CountdownTimer,
     },
 
     mounted() {

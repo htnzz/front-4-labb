@@ -27,7 +27,7 @@
           </router-link>
         </div>
         <div v-if="!isAuth">
-          <router-link to="/register">
+          <router-link to="/game_over"> <!-- поменять на регистер -->
             <PixelButton>
               РЕГИСТРАЦИЯ
             </PixelButton>

@@ -5,6 +5,7 @@ import Game from "../views/Game.vue";
 import Leaderboard from "../views/Leaderboard.vue";
 import Login from '../views/Login.vue';
 import Register from '../views/Register.vue';
+import GameOver from '../views/GameOver.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -38,6 +39,11 @@ const routes: Array<RouteRecordRaw> = [
   name: 'Register',
   component: Register,
 },
+{
+  path: '/game_over',
+  name: 'GameOver',
+  component: GameOver,
+}
 ]
 
 const router = createRouter({
