@@ -26,11 +26,12 @@
     "vite": "^4.1.1"
   },
   "dependencies": {
-    "phaser": "^3.70.0",
     "axios": "^1.6.2",
     "bootstrap": "^5.3.2",
     "jquery": "^3.7.1",
     "jsonwebtoken": "^9.0.2",
+    "mitt": "^3.0.1",
+    "phaser": "^3.70.0",
     "popper.js": "^1.16.1",
     "vee-validate": "^2.2.15",
     "vue": "^3.2.47",

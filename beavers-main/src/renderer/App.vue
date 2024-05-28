@@ -10,6 +10,12 @@
 <script setup lang="ts">
 
 </script>
+<script>
+import mitt from 'mitt';
+
+const eventBus = mitt();
+export { eventBus };
+</script>
 
 <style lang="css">
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');

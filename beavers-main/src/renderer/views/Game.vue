@@ -14,9 +14,11 @@
   import Leaderboard from "../views/Leaderboard.vue";
   import http from "../http_common";
   import Board from "../components/Board.vue";
+  import { eventBus } from '../App.vue'
   
   
   export default defineComponent({
+
     components: {
       GameButton,
       Leaderboard,
@@ -127,6 +129,10 @@
           console.log(e);
         });
       this.startGame();
+      eventBus.on('timerEnded', () => {
+      console.log('sms получено');
+      this.$router.push({ name: 'GameOver' }); // Реагируйте на событие
+    });
     },
     beforeUpdate() {
       this.increment();

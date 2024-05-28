@@ -5,6 +5,9 @@
 </template>
 
 <script>
+import mitt from 'mitt';
+import { eventBus } from '../App.vue'
+
 export default {
   data() {
     return {
@@ -29,11 +32,8 @@ export default {
           clearInterval(this.intervalId);
 
           // Assuming you have a parent component that listens for the 'timer-end' event
-          if (this.$emit) { // Check if $emit exists (might not in child components)
-            this.$emit('timer-end'); // Emit the event to signal the parent
-          } else {
-            console.warn('Timer component cannot emit events. Consider using a parent-child communication mechanism like props or Vuex.');
-          }
+          eventBus.emit('timerEnded')
+          console.log('sms отправлено'); // Emit the event to signal the pare
 
           // If using Vue Router for navigation (assuming it's set up):
            // Navigate to the other component
