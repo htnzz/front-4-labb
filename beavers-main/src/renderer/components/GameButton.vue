@@ -25,7 +25,7 @@
   margin-top: 10px;
   border-radius: 10px;
   padding: 10px 25px;
-  font-family: 'Comfortaa', sans-serif;
+  font-family: 'Pixelify Sans', sans-serif;
   font-weight: 700;
   background: none;
   border: none;

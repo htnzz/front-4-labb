@@ -106,7 +106,7 @@ input {
     border: 3px solid #b85fac;
     border-radius: 10px;
     font-size: 20px;
-    font-family: 'Comfortaa', sans-serif;
+    font-family: 'Pixelify Sans', sans-serif;
 }
 
 input:focus {
