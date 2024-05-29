@@ -23,7 +23,7 @@ import { eventBus } from '../App.vue';
 export default {
   data() {
     return {
-      endTime: Date.now() + 18000, // 10 seconds in milliseconds
+      endTime: Date.now() + 50000, // 10 seconds in milliseconds
       intervalId: null,
       formattedTime: '00:00', // Initial formatted time
       isPaused: false,

@@ -1,6 +1,6 @@
 <template>
     <CountdownTimer />
-    <div>Уровень {{ lvl }}</div>
+    <div>Счёт: {{ userscore }}</div>
     <div class="board" :style="{ width: 68 * size + 'px', height: 68 * size * 'px'}">
         <BoardItem
             v-for="(cell, index) in cells"
@@ -42,14 +42,32 @@ export default {
         },
 
     setup() {
+        const cellsLvl1 = ref([
+            ref([1, 0, 4, 7, 0, 2, 0, 0, 0, 3, 0, 0, 9, 0, 0, 0]),
+            ref([2, 1, 0, 0, 0, 7, 0, 0, 0, 0, 9, 3, 0, 0, 0, 4]),
+            ref([7, 0, 0, 1, 3, 0, 0, 0, 2, 0, 9, 0, 4, 0, 0, 0]),
+        ]);
+        const cellsLvl2 = ref([
+            ref([0, 0, 0, 1, 2, 0, 0, 0, 0, 4, 0, 7, 0, 0, 10, 0, 8, 0, 9, 0, 3, 0, 0, 0, 0]),
+            ref([1, 2, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 9, 0, 0, 0, 8, 0, 0, 0, 0, 3, 10]),
+            ref([8, 0, 0, 0, 0, 1, 10, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 4, 8, 2, 0, 9, 0, 0, 0]),
+        ]);
+        const cellsLvl3 = ref([
+            ref([1, 0, 2, 0, 0, 0, 7, 0, 8, 0, 0, 0, 0, 3, 0, 13, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 15, 0, 4]),
+            ref([2, 0, 3, 0, 0, 0, 0, 1, 8, 0, 7, 0, 0, 0, 0, 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 10, 0, 0, 0, 4, 0, 0, 0, 15]),
+            ref([0, 1, 0, 0, 0, 0, 4, 0, 0, 0, 0, 3, 7, 0, 10, 0, 0, 2, 0, 0, 0, 0, 0, 15, 0, 9, 0, 0, 0, 0, 0, 0, 12, 13, 0, 0]),
+        ]);
+
         let cells = ref([0, 2, 0, 4, 1, 0, 0, 3, 0, 0, 0, 0, 7, 0, 0, 9]);
         const path = ref([]);
         const size = ref(4);
         const walkedPath = ref([]);
-        const maxLvl = 3;
+        const maxLvl = 100; // Это убери да
         const volume = 0.3;
-        let gameOver = ref(false);
+        let gameOver = ref(false); // Это тоже убери да
         let lvl = ref(1);
+        let userscore = ref(0);
+        let randomIndex = ref(0);
 
         const mousedown = (index) => {
             path.value = [];
@@ -85,6 +103,10 @@ export default {
 
         const goToNextLvl = () => {
                 lvl.value += 1;
+                userscore.value += 1;
+                if (lvl.value > 3) {
+                    lvl.value = 1
+                }
 
                 if (lvl.value > maxLvl) {
                     // lvl.value = 1;
@@ -118,17 +140,22 @@ export default {
 
         const start = (lvl) => {
             if (lvl === 1){
+                randomIndex.value = Math.floor(Math.random() * 3);
+                
                 gameOver.value = false;
-                cells.value = [1, 0, 4, 7, 0, 2, 0, 0, 0, 3, 0, 0, 9, 0, 0, 0]
+                cells.value = cellsLvl1.value[randomIndex.value].value;
+                
                 size.value = 4;
             }
             if (lvl === 2) {
-                cells.value = [0, 0, 0, 1, 2, 0, 0, 0, 0, 4, 0, 7, 0, 0, 10, 0, 8, 0, 9, 0, 3, 0, 0, 0, 0]
+                randomIndex.value = Math.floor(Math.random() * 3);
+                cells.value = cellsLvl2.value[randomIndex.value].value;
                 size.value = 5;
                 
             }
             if (lvl === 3) {
-                cells.value = [1, 0, 2, 0, 0, 0, 7, 0, 8, 0, 0, 0, 0, 3, 0, 13, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 15, 0, 4]
+                randomIndex.value = Math.floor(Math.random() * 3);
+                cells.value = cellsLvl3.value[randomIndex.value].value;
                 size.value = 6;
                 
             }
@@ -146,12 +173,17 @@ export default {
         
         return {
             cells,
+            cellsLvl1,
+            cellsLvl2,
+            cellsLvl3,
+            randomIndex,
             mousedown,
             mouseup,
             go,
             checkItem,
             isPathClosed,
             lvl,
+            userscore,
             reload,
             size, 
             gameOver,
