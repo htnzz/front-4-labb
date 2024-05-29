@@ -1,101 +1,65 @@
 <template>
     <div class="leaderboard">
       <div class="header">Таблица лидеров</div>
-      <div class="row-table">
-        <div class="name" style="font-size: 26px; font-weight: 700">Name</div>
-        <div class="score" style="font-size: 26px; font-weight: 700">
-          Score
+      <div class="leaderboard-list">
+        <div class="leaderboard-item" v-for="user in users" :key="user.id">
+          <div>{{ user.username }}</div>
+          <div>{{ user.score }}</div>
+          <div>{{ formatTime(user.time) }}</div>
         </div>
       </div>
-      <div v-for="user in info" :key="username">
-        <div class="row-table">
-          <div class="name">
-            {{ user.username }}
-          </div>
-          <div class="score">
-            {{ user.score }}
-          </div>
-        </div>
-      </div>
-      <router-link to="/">
-        <div class="exit">
-          <game-button> Назад </game-button>
-        </div>
-      </router-link>
     </div>
   </template>
-  <script lang="ts">
-  import { Component, defineComponent } from "vue";
-  import GameButton from "../components/GameButton.vue";
-  import User from "../typings/User";
-  import http from "../http_common";
-  export default defineComponent({
-    components: {
-      GameButton,
-    },
   
+  <script lang="ts">
+  import { defineComponent } from "vue";
+  import http from "../http_common";
+  
+  export default defineComponent({
     data() {
-      const info: User[] = [];
-      return { info };
+      return {
+        users: [] as Array<{ id: number, username: string, score: number, time: number }>
+      };
+    },
+    methods: {
+      formatTime(ms: number) {
+        const seconds = Math.floor(ms / 1000) % 60;
+        const minutes = Math.floor(ms / 60000);
+        return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+      }
     },
     async mounted() {
-      await http
-        .get("/users/")
-        .then((response) => {
-          this.info = response.data;
-          console.log(response);
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-    },
+      await http.get('/leaderboard/').then((response) => {
+        this.users = response.data;
+      }).catch((e) => {
+        console.log(e);
+      });
+    }
   });
   </script>
   
-  <style scoped lang="css">
+  <style scoped>
   .leaderboard {
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-    color: #ffffff;
-    font-size: 22px;
-  }
-  .exit {
-    display: flex;
-    position: absolute;
-    justify-content: flex-end;
-    width: 40%;
-    bottom: 2em;
-    right: 43%;
-  }
-  
-  .row-table {
-    display: flex;
-    border-bottom: 5px solid #f779db;
-    background-color: #6b086b;
-  }
-  
-  .name {
-    display: flex;
-    justify-content: center;
-    width: 50%;
-    border-right: 5px solid #f779db;
-    padding: 5px;
-  }
-  
-  .score {
-    display: flex;
-    justify-content: center;
-    width: 50%;
-    padding: 5px;
+    text-align: center;
   }
   
   .header {
-    margin-top: 7%;
-    margin-bottom: 7%;
-    font-size: 60px;
-    font-weight: bolder;
-    text-align: center;
-    color: #ffffff;
+    font-size: 30px;
+    padding: 20px;
+  }
+  
+  .leaderboard-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .leaderboard-item {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
   }
   </style>
+  

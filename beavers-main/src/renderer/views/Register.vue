@@ -84,10 +84,8 @@
 }
 
 .form {
-    background-color: #e570f5;
     display: flex;
     flex-direction: column;
-    border-radius: 5px;
     padding: 10px 10px 2px;
     align-items: center;
 }
@@ -104,9 +102,13 @@ input {
     padding: 5px;
     background: none;
     border: 3px solid #b85fac;
-    border-radius: 10px;
     font-size: 20px;
     font-family: 'Pixelify Sans', sans-serif;
+    color: #ffffff; /* Цвет текста в полях ввода */
+}
+
+input::placeholder {
+    color: #ffffff; /* Цвет текста плейсхолдера */
 }
 
 input:focus {

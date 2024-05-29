@@ -10,17 +10,17 @@
             </div>
             <div class="in">
                 <!--check login and password-->
-            <game-button type="submit" class="enter">
-                Войти
-            </game-button>
-        </div>
-        <div>
-            <router-link to="/">
-                <game-button class="enter">
-                    Назад
+                <game-button type="submit" class="enter">
+                    Войти
                 </game-button>
-            </router-link>
-        </div>
+            </div>
+            <div>
+                <router-link to="/" class="no-underline">
+                    <game-button class="enter">
+                        Назад
+                    </game-button>
+                </router-link>
+            </div>
         </form>
     </div>
 </template>
@@ -85,8 +85,6 @@ export default {
 .form {
     display: flex;
     flex-direction: column;
-    background-color: #e570f5;
-    border-radius: 5px;
     padding: 10px 10px 2px;
     align-items: center;
 }
@@ -95,42 +93,21 @@ export default {
     margin-bottom: 10px;
 }
 
-.form div {
-    margin-bottom: 10px;
-}
-
 input {
     padding: 5px;
     background: none;
     border: 3px solid #b85fac;
-    border-radius: 10px;
     font-size: 20px;
     font-family: 'Pixelify Sans', sans-serif;
+    color: #ffffff; /* Цвет текста в полях ввода */
+}
+
+input::placeholder {
+    color: #ffffff; /* Цвет текста плейсхолдера */
 }
 
 input:focus {
     outline: none;
-}
-
-.pwrd {
-    display: flex;
-}
-
-.pwrd-img {
-    width: 4cqmin;
-}
-
-.show {
-    width: 15%;
-    margin-left: 1em;
-    background: none;
-    border: 3px solid #b85fac;
-    border-radius: 10px;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.show:hover {
-    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
 .enter {
@@ -139,16 +116,16 @@ input:focus {
     color: #fcfcfc;
 }
 
-.reg {
-    font-style: italic;
-    color: rgb(253, 253, 253);
-}
-
-.reg:hover {
-    text-decoration: underline;
-}
-
-a {
+/* Добавленные стили */
+.no-underline {
     text-decoration: none;
+}
+
+.no-underline:link, 
+.no-underline:visited, 
+.no-underline:hover, 
+.no-underline:active {
+    text-decoration: none;
+    color: inherit; /* Наследовать цвет от родительского элемента */
 }
 </style>
