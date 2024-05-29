@@ -29,7 +29,7 @@
       }
     },
     async mounted() {
-      await http.get('/leaderboard/').then((response) => {
+      await http.get('/users/').then((response) => {
         this.users = response.data;
       }).catch((e) => {
         console.log(e);
