@@ -9,31 +9,27 @@
                 <input v-model="email" type="text" placeholder="Почта" required>
                 <input v-model="password" type="password" placeholder="Пароль" required id="password">
             </div>
-            <div class="in">
-                  <!--check register and password-->
-                    <game-button type="submit" class="enter">
-                        Войти  
-                    </game-button>
-                </div>
-                <div class="in">
-                    <router-link to="/">
-                        <game-button class="enter">
-                            Назад
-                        </game-button>
-                    </router-link>
-                </div>
+            <div class="buttons">
+                <PixelButton type="submit" class="main-button">
+                    Войти  
+                </PixelButton>
+                <router-link to="/" class="main-button">
+                    <PixelButton>
+                    Назад
+                    </PixelButton>
+                </router-link>
+            </div>
         </form>
     </div>
 </template>
 
 <script lang="ts">
     import http from "../http_common";
-    import GameButton from "../components/GameButton.vue";
-
+    import PixelButton from "../components/FancyButton.vue";
 
     export default {
         components: {
-            GameButton
+            PixelButton
         },
 
         data() {
@@ -55,24 +51,23 @@
 
                     const token = response.data.token;
 
-                if (token) {
-                    this.$router.push("/");
-                    localStorage.setItem('token', token);
+                    if (token) {
+                        this.$router.push("/");
+                        localStorage.setItem('token', token);
+                    }
+                } catch (error) {
+                    console.error(error);
                 }
-            } catch (error) {
-                console.error(error);
-            }
+            },
         },
-    },
-};
+    };
 </script>
 
 <style scoped lang="css">
-.login-form {
+.register {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
 .header {
@@ -94,9 +89,16 @@
     margin-bottom: 10px;
 }
 
-.form div {
-    margin-bottom: 10px;
-}   
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-button {
+    margin-bottom: 2px; 
+    border: 2px solid #b85fac;
+}
 
 input {
     padding: 5px;
@@ -115,40 +117,9 @@ input:focus {
     outline: none;
 }
 
-.pwrd {
-    display: flex;
-}
-
-.pwrd-img {
-    width: 4cqmin;
-}
-
-.show {
-    width: 15%;
-    margin-left: 1em;
-    background: none;
-    border: 3px solid #8496ae;
-    border-radius: 10px;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.show:hover {
-    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-}
-
 .enter {
-    font-size: 24px;
+    font-size: 50px !important;
     color: #ffffff;
-    
-}
-
-.reg {
-    font-style: italic;
-    color: rgb(87, 83, 83);
-}
-
-.reg:hover {
-    text-decoration: underline;
 }
 
 a {

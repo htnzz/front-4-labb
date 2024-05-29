@@ -28,9 +28,9 @@
           </PixelButton>
         </router-link>
       </div>
-      <div v-if="isAuth" class="exit">
+      <div v-if="isAuth">
         <router-link to="/login">
-          <PixelButton @click="handleExit">
+          <PixelButton @click="handleExit" class="main-button">
             ВЫЙТИ
           </PixelButton>
         </router-link>

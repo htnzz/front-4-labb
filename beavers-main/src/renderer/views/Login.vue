@@ -10,16 +10,17 @@
             </div>
             <div class="in">
                 <!--check login and password-->
-                <game-button type="submit" class="enter">
+                <PixelButton type="submit" class="enter">
                     Войти
-                </game-button>
-            </div>
-            <div>
-                <router-link to="/" class="no-underline">
-                    <game-button class="enter">
-                        Назад
-                    </game-button>
-                </router-link>
+                </PixelButton>
+            
+                <div>
+                    <router-link to="/" class="no-underline">
+                        <PixelButton class="enter">
+                            Назад
+                        </PixelButton>
+                    </router-link>
+                </div>
             </div>
         </form>
     </div>
@@ -27,11 +28,11 @@
 
 <script lang="ts">
 import http from "../http_common";
-import GameButton from "../components/GameButton.vue";
+import PixelButton from "../components/FancyButton.vue";
 
 export default {
     components: {
-        GameButton
+        PixelButton
     },
 
     data() {
@@ -67,6 +68,13 @@ export default {
 </script>
 
 <style scoped lang="css">
+
+.in {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .login-form {
     display: flex;
     flex-direction: column;
@@ -111,9 +119,10 @@ input:focus {
 }
 
 .enter {
-    font-size: 24px;
     cursor: pointer;
     color: #fcfcfc;
+    margin-bottom: 2px; 
+    border: 2px solid #b85fac;
 }
 
 /* Добавленные стили */
