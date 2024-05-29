@@ -15,7 +15,8 @@
     props: {
       isVisible: {
         type: Boolean,
-        required: true
+        required: true,
+        default: true,
       }
     },
     data() {

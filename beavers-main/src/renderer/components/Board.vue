@@ -1,6 +1,6 @@
 <template>
     <CountdownTimer />
-    <div class="score">Счёт: {{ userscore }}</div>
+    <div>Счёт: {{ userscore }}</div>
     <div class="board" :style="{ width: 68 * size + 'px', height: 68 * size * 'px'}">
         <BoardItem
             v-for="(cell, index) in cells"
@@ -50,7 +50,7 @@ export default {
         const cellsLvl2 = ref([
             ref([0, 0, 0, 1, 2, 0, 0, 0, 0, 4, 0, 7, 0, 0, 10, 0, 8, 0, 9, 0, 3, 0, 0, 0, 0]),
             ref([1, 2, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 9, 0, 0, 0, 8, 0, 0, 0, 0, 3, 10]),
-            ref([8, 0, 0, 0, 0, 1, 10, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 4, 8, 2, 0, 9, 0, 0, 0]),
+            ref([8, 0, 0, 0, 0, 1, 10, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 4, 3, 2, 0, 9, 0, 0, 0]),
         ]);
         const cellsLvl3 = ref([
             ref([1, 0, 2, 0, 0, 0, 7, 0, 8, 0, 0, 0, 0, 3, 0, 13, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 15, 0, 4]),
@@ -201,16 +201,6 @@ export default {
 }   
 audio {
   display: none; /* Скрыть аудиоплеер */
-}
-
-.score {
-    color: #ffffff;
-    font-size: 20px;
-}
-
-.reload {
-    color: #ffffff;
-    font-size: 20px;
 }
 
 </style>

@@ -10,7 +10,7 @@
                 <input v-model="password" type="password" placeholder="Пароль" required id="password">
             </div>
             <div class="buttons">
-                <PixelButton type="submit" class="main-button">
+                <PixelButton type="submit">
                     ВОЙТИ
                 </PixelButton>
                 <router-link to="/" class="main-button">

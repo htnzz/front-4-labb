@@ -37,62 +37,10 @@ export default defineComponent({
       userscore: 0,
       showPopup: true,
       isFadingOut: false,
-      isPaused: false
+      isPaused: false,
     };
   },
   methods: {
-    increment() {
-      if (this.isRightBeaver && this.isRightLog && !this.caught) {
-        this.caught = true;
-        this.currScore++;
-      } else if (this.isLeftBeaver && this.isLeftLog && !this.caught) {
-        this.caught = true;
-        this.currScore++;
-      }
-    },
-    countDown() {
-      if (this.counter && !this.isPaused) {
-        return setTimeout(() => {
-          --this.counter;
-          this.countDown();
-        }, 1000);
-      }
-      this.score = this.currScore;
-    },
-    toLeftBeaver() {
-      this.isRightBeaver = false;
-      this.isLeftBeaver = true;
-    },
-    toRightBeaver() {
-      this.isLeftBeaver = false;
-      this.isRightBeaver = true;
-    },
-    toLeftBounty() {
-      setTimeout(() => {
-        this.isLeftLog = true;
-        this.isRightLog = false;
-        this.caught = false;
-      }, 1000);
-    },
-    toRightBounty() {
-      setTimeout(() => {
-        this.isLeftLog = false;
-        this.isRightLog = true;
-        this.caught = false;
-      }, 1000);
-    },
-    bountyLoop() {
-      if (this.isRightLog) {
-        this.toLeftBounty();
-      } else {
-        this.toRightBounty();
-      }
-    },
-    randomNum() {
-      var random = Math.random();
-      if (random < 0.34) return 1;
-      return random;
-    },
     handleSubmit() {
       if (this.score > this.userscore) {
         const response = http.put('/user/update/', { score: this.score });
@@ -100,20 +48,9 @@ export default defineComponent({
     },
     startGame() {
       setTimeout(() => {
-        this.isFadingOut = true;
-        setTimeout(() => {
-          this.showPopup = false;
-          this.isFadingOut = false;
-          this.countDown();
-        }, 1000); // Длительность анимации исчезновения
-      }, 4000); // Время до начала исчезновения
+        this.showPopup = false;
+        }, 1000); // Длительность анимации исчезновения// Время до начала исчезновения
     },
-    togglePause() {
-      this.isPaused = !this.isPaused;
-      if (!this.isPaused) {
-        this.countDown(); // Продолжить отсчет времени при снятии с паузы
-      }
-    }
   },
   async mounted() {
     await http
@@ -129,18 +66,7 @@ export default defineComponent({
     eventBus.on('timerEnded', () => {
       this.$router.push({ name: 'GameOver' });
     });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        this.togglePause();
-      }
-    });
   },
-  beforeUpdate() {
-    this.increment();
-  },
-  updated() {
-    this.bountyLoop();
-  }
 });
 </script>
 

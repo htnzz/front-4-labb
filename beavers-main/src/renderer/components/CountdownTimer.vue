@@ -21,9 +21,10 @@ import mitt from 'mitt';
 import { eventBus } from '../App.vue';
 
 export default {
+
   data() {
     return {
-      endTime: Date.now() + 18000, // 10 seconds in milliseconds
+      endTime: Date.now() + 20000 + 2000, // 10 seconds in milliseconds
       intervalId: null,
       formattedTime: '00:00', // Initial formatted time
       isPaused: false,
@@ -39,12 +40,13 @@ export default {
     document.removeEventListener('keydown', this.handleKeydown);
   },
   methods: {
+    
+    
     startTimer() {
       this.intervalId = setInterval(() => {
         if (!this.isPaused) {
           const now = Date.now();
           const distance = this.endTime - now;
-
           if (distance < 0) {
             clearInterval(this.intervalId);
 
@@ -84,7 +86,11 @@ export default {
     restartGame() {
       // Logic to restart the game
       this.$router.go(0); // Reloads the current page
-    }
+    },
+    handleLevelChange() {
+      // Increase the timer value by 5000
+      this.distance += 5000;
+    },
   }
 };
 </script>
