@@ -109,9 +109,6 @@ export default defineComponent({
   flex-direction: column;
 }
 
-.main-button {
-  margin-bottom: 2px; 
-}
 
 .exit {
   position: absolute;

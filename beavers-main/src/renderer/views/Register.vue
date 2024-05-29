@@ -11,11 +11,11 @@
             </div>
             <div class="buttons">
                 <PixelButton type="submit" class="main-button">
-                    Войти  
+                    ВОЙТИ
                 </PixelButton>
                 <router-link to="/" class="main-button">
                     <PixelButton>
-                    Назад
+                    НАЗАД
                     </PixelButton>
                 </router-link>
             </div>
@@ -95,15 +95,10 @@
     align-items: center;
 }
 
-.main-button {
-    margin-bottom: 2px; 
-    border: 2px solid #b85fac;
-}
-
 input {
     padding: 5px;
     background: none;
-    border: 3px solid #b85fac;
+    border: 3px solid #aa70da;
     font-size: 20px;
     font-family: 'Pixelify Sans', sans-serif;
     color: #ffffff; /* Цвет текста в полях ввода */

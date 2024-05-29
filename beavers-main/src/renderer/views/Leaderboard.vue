@@ -72,7 +72,7 @@ export default defineComponent({
   width: 80%;
   padding: 10px 20px;
   margin-bottom: 10px;
-  border: 3px solid #b85fac;
+  border: 3px solid #aa70da;
 }
 
 .username, .score, .time {
@@ -84,7 +84,6 @@ export default defineComponent({
 .back-button {
   display: inline-flex;
   justify-content: center;
-  border: 2px solid #b85fac;
   position: fixed;
   bottom: 40px;
   left: 50%;

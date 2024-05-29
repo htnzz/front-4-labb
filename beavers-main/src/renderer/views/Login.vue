@@ -11,13 +11,13 @@
             <div class="in">
                 <!--check login and password-->
                 <PixelButton type="submit" class="enter">
-                    Войти
+                    ВОЙТИ
                 </PixelButton>
             
                 <div>
                     <router-link to="/" class="no-underline">
                         <PixelButton class="enter">
-                            Назад
+                            НАЗАД
                         </PixelButton>
                     </router-link>
                 </div>
@@ -104,7 +104,7 @@ export default {
 input {
     padding: 5px;
     background: none;
-    border: 3px solid #b85fac;
+    border: 3px solid #aa70da;
     font-size: 20px;
     font-family: 'Pixelify Sans', sans-serif;
     color: #ffffff; /* Цвет текста в полях ввода */
@@ -121,8 +121,6 @@ input:focus {
 .enter {
     cursor: pointer;
     color: #fcfcfc;
-    margin-bottom: 2px; 
-    border: 2px solid #b85fac;
 }
 
 /* Добавленные стили */

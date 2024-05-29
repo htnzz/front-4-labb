@@ -1,6 +1,6 @@
 <template>
     <CountdownTimer />
-    <div>Счёт: {{ userscore }}</div>
+    <div class="score">Счёт: {{ userscore }}</div>
     <div class="board" :style="{ width: 68 * size + 'px', height: 68 * size * 'px'}">
         <BoardItem
             v-for="(cell, index) in cells"
@@ -201,6 +201,16 @@ export default {
 }   
 audio {
   display: none; /* Скрыть аудиоплеер */
+}
+
+.score {
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.reload {
+    color: #ffffff;
+    font-size: 20px;
 }
 
 </style>
