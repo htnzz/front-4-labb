@@ -102,7 +102,7 @@ export default defineComponent({
 
 .game {
   text-align: center;
-  margin-top: 60px;
+  margin-top: 30px;
   user-select: none;
   -webkit-user-select: none;
   -khtml-user-select: none;

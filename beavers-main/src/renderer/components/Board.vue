@@ -1,5 +1,5 @@
 <template>
-    <CountdownTimer />
+    <CountdownTimer :userscore="userscore"/>
     <div>Счёт: {{ userscore }}</div>
     <div class="board" :style="{ width: 68 * size + 'px', height: 68 * size * 'px'}">
         <BoardItem
@@ -27,8 +27,12 @@
 import CountdownTimer from "../components/CountdownTimer.vue"
 import BoardItem from "../components/BoardItem.vue";
 import { ref } from 'vue';
+import { eventBus } from "../App.vue";
+
+let userscore = ref(0);
 
 export default {
+    
     name: 'Board',
 
     components: {
@@ -66,7 +70,7 @@ export default {
         const volume = 0.3;
         let gameOver = ref(false); // Это тоже убери да
         let lvl = ref(1);
-        let userscore = ref(0);
+        
         let randomIndex = ref(0);
 
         const mousedown = (index) => {
@@ -104,6 +108,7 @@ export default {
         const goToNextLvl = () => {
                 lvl.value += 1;
                 userscore.value += 1;
+                eventBus.emit('increaseTimer');
                 if (lvl.value > 3) {
                     lvl.value = 1
                 }
@@ -197,7 +202,7 @@ export default {
 .board {
     display: flex;
     flex-wrap: wrap;
-    margin: 20px auto;
+    margin: 10px auto;
 }   
 audio {
   display: none; /* Скрыть аудиоплеер */

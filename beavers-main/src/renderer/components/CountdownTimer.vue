@@ -2,14 +2,15 @@
   <div>
     <div class="countdown">
       <h1>Время: {{ formattedTime }}</h1>
+      <!-- <h2>Счёт тест: {{ userscore }}</h2> -->
     </div>
     <div v-if="isPaused" class="pause-overlay">
       <div class="pause-menu">
         <h1>Пауза</h1>
         <div class="button-container">
-          <PixelButton @click="togglePause">Продолжить</PixelButton>
-          <PixelButton @click="restartGame">Начать с начала</PixelButton>
-          <PixelButton @click="goToMenu">Выйти в меню</PixelButton>
+          <PixelButton @click="togglePause">ПРOДOЛЖИТЬ</PixelButton>
+          <PixelButton @click="restartGame">НАЧАТЬ С НАЧАЛА</PixelButton>
+          <PixelButton @click="goToMenu">ВЫЙТИ В МЕНЮ</PixelButton>
         </div>
       </div>
     </div>
@@ -21,23 +22,31 @@ import mitt from 'mitt';
 import { eventBus } from '../App.vue';
 
 export default {
-
+  props: {
+    userscore: {
+      type: Number,
+      required: true,
+    },
+  },
   data() {
     return {
       endTime: Date.now() + 20000 + 2000, // 10 seconds in milliseconds
       intervalId: null,
       formattedTime: '00:00', // Initial formatted time
       isPaused: false,
-      remainingTime: 18000 // Initial remaining time in milliseconds
+      remainingTime: 18000,
+      userscore: 0,
     };
   },
   mounted() {
     document.addEventListener('keydown', this.handleKeydown);
     this.startTimer();
+    eventBus.on('increaseTimer', this.increaseTimer);
   },
   beforeUnmount() {
     clearInterval(this.intervalId);
     document.removeEventListener('keydown', this.handleKeydown);
+    eventBus.off('increaseTimer', this.increaseTimer);
   },
   methods: {
     
@@ -52,7 +61,8 @@ export default {
 
             // Emit the event to signal the parent component that the timer has ended
             eventBus.emit('timerEnded');
-            console.log('sms отправлено'); // Emit the event to signal the parent component
+            console.log('sms отправлено');
+            console.log(userscore.value); // Emit the event to signal the parent component
           } else {
             this.remainingTime = distance;
             this.formattedTime = this.formatTime(distance);
@@ -91,6 +101,10 @@ export default {
       // Increase the timer value by 5000
       this.distance += 5000;
     },
+    increaseTimer() {
+      this.remainingTime += 5000;
+      this.endTime = Date.now() + this.remainingTime;
+    },
   }
 };
 </script>
@@ -101,7 +115,8 @@ h1 {
 }
 .countdown {
   text-align: center;
-  font-size: 18px;
+  font-size: 12px;
+  margin-top: 10px;
 }
 
 .pause-overlay {
@@ -137,7 +152,7 @@ h1 {
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  border: 3px solid #b85fac;
+  border: 1px solid #b85fac;
   color: #ffffff;
 }
 
